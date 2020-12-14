@@ -6,6 +6,8 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
+
+
         android:allowBackup="true"
         android:icon="@drawable/img_logo"
         android:label="Elizabeth Cakes"
@@ -13,10 +15,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="ExtraText">
-
+        <activity android:name=".SettingsActivity"></activity>
         <activity
             android:name=".MainActivity"
-            android:label="Inicio"
+            android:theme="@style/actionbar"
+            android:label="Elizabeth Cakes"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Registro"

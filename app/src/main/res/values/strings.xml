@@ -1,0 +1,45 @@
+<resources>
+    <string name="registrar">Registrate</string>
+    <string name="confirmar_password">confirmar password</string>
+    <string name="crear_cuenta">CREAR CUENTA</string>
+    <string name="nombre_completo">Nombre Completo</string>
+    <string name="inicio_sesion">inicio_sesion</string>
+    <string name="login">login</string>
+    <string name="registro">registro</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+
+    <string name="err_msg_enter_nombre_completo">Porfavor ingrese el Nombre Completo</string>
+    <string name="err_msg_enter_email">Porfavor ingrese un correo valido!</string>
+    <string name="err_msg_enter_Password1">ingrese una Contraseña</string>
+    <string name="err_msg_enter_Password2">confirmar Contraseña</string>
+    <string name="registery_successfull">Registro Completo</string>
+    <string name="img_login">img_login</string>
+    <string name="Ol_pss">Olvide mi Contraseña</string>
+    <string name="Ol_pss2">Ingresa tu email para enviarte tu contraseña</string>
+    <string name="btn_enviar_recu">Enviar</string>
+    <string name="no_tienes_usuario">No tienes usuario?</string>
+    <string name="inciar_sesion">Inciar Sesion</string>
+
+    <string name="please_wait">Please wait&#8230;</string>
+
+    <string name="title_complete_profile">PERFIL</string>
+    <string name="et_hint_mobile_number">Numero Telefonico</string>
+    <string name="rb_lbl_hombre">HOMBRE</string>
+    <string name="rb_lbl_mujer">MUJER</string>
+    <string name="btn_lbl_guardar">Guardar Cambios</string>
+    <string name="content_description">imagen</string>
+    <string name="read_storage_permission_denied">Nego, el acceso al almacenamiento, si quiere cambiarlo
+    debe hacerlo desde las configuraciones de la app</string>
+    <string name="image_selection_failed">Fallo al seleccionar la imagen, intente de nuevo</string>
+    <string name="title_activity_dash_board_activy">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_activity_cindy_problema">MainActivity</string>
+    <string name="title_activity_main12">MainActivity</string>
+    <string name="title_activity_main2">MainActivity</string>
+    <string name="title_activity_main_cindy">MainActivity</string>
+    <string name="title_activity_main35">MainActivity</string>
+    <string name="title_edit_profile">EDITAR PERFIL</string>
+</resources>

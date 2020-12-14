@@ -10,4 +10,9 @@
     <color name="blanco">#FFFFFF</color>
 
     <color name="colorSecondaryText">#9b9b9b</color>>
+
+    <color name="colorImageViewBackground">#E1E1E1</color>
+    <color name="colorWhite">#FFFFFF</color>
+
+
 </resources>

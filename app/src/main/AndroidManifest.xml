@@ -13,7 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="ExtraText">
-        <activity android:name=".MainActivity2"></activity>
+        <activity android:name=".AddProductActivity"
+            android:screenOrientation="portrait"
+            ></activity>
+        <activity android:name=".MainActivity2" />
         <activity android:name=".SettingsActivity" />
         <activity
             android:name=".MainActivity"

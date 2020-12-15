@@ -40,19 +40,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
+
     <ImageView
         android:id="@+id/ImageView5"
-        android:layout_width="276dp"
-        android:layout_height="195dp"
+        android:layout_width="445dp"
+        android:layout_height="234dp"
         android:layout_marginTop="24dp"
         android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toBottomOf="@+id/textView5"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.968"
+        app:layout_constraintStart_toStartOf="@+id/textView5"
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        app:layout_constraintVertical_bias="0.038"
+        app:layout_constraintVertical_bias="0.648"
         tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageView
+        android:id="@+id/iv_add_update_product"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:contentDescription="@string/content_description"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
+        android:padding="@dimen/add_update_product_icon_padding"
+        android:src="@drawable/ic_vector_add_photo"
+        tools:layout_editor_absoluteX="345dp"
+        tools:layout_editor_absoluteY="227dp" />
 
     <EditText
         android:id="@+id/editTextTextPersonName2"

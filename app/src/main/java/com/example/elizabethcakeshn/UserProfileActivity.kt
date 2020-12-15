@@ -89,7 +89,7 @@ class UserProfileActivity : BaseActivity1(), View.OnClickListener {
                             if (selectedImageFileUri != null){
                                 FireStore().uploadImageToCloudStore(
                                     this@UserProfileActivity,
-                                    selectedImageFileUri
+                                    selectedImageFileUri, Constants. USER_PROFILE_IMAGE
                                 )
                             }else{
                                 updateUserProfileDetails()

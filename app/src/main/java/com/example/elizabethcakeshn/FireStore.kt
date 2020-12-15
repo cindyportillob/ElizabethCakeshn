@@ -123,9 +123,9 @@ class FireStore {
     }
 
 
-    fun uploadImageToCloudStore(activity: Activity, imageFileURI:Uri?){
+    fun uploadImageToCloudStore(activity: Activity, imageFileURI:Uri?,imageType:String){
         val sRef: StorageReference = FirebaseStorage.getInstance().reference.child(
-            Constants.USER_PROFILE_IMAGE
+            imageType
                     + System.currentTimeMillis()+"."
         + Constants.getFileExtension(
                 activity,
@@ -146,6 +146,10 @@ class FireStore {
                         is UserProfileActivity ->{
                             activity.imageUploadSuccess(uri.toString())
                         }
+                        is AddProductActivity->{
+                            activity.imageUploadSuccess(uri.toString())
+
+                        }
                     }
                 }
         }
@@ -163,5 +167,29 @@ class FireStore {
                 )
             }
     }
+
+    fun uploadProductDetails(activity: AddProductActivity, productInfo: Product) {
+
+        mFireStore.collection(Constants.PRODUCTS)
+            .document()
+            // Here the userInfo are Field and the SetOption is set to merge. It is for if we wants to merge
+            .set(productInfo, SetOptions.merge())
+            .addOnSuccessListener {
+
+                // Here call a function of base activity for transferring the result to it.
+                activity.productUploadSuccess()
+            }
+            .addOnFailureListener { e ->
+
+                activity.hideProgressDialog()
+
+                Log.e(
+                    activity.javaClass.simpleName,
+                    "Error while uploading the product details.",
+                    e
+                )
+            }
+    }
+
 
 }

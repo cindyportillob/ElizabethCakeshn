@@ -34,6 +34,10 @@ object Constants {
     const val NAME: String = "Nombre"
     const val EMAIL: String = "Email"
 
+    const val PRODUCT_IMAGE:String= "product_image"
+    const val PRODUCTS:String= "products"
+
+
 
     const val USER_PROFILE_IMAGE: String = "User_Profile_Image"
 

@@ -15,28 +15,12 @@
         android:layout_height="wrap_content">
 
 
-
         <FrameLayout
             android:id="@+id/fl_header_bg"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/header_image_height">
-
-            <ImageView
-                android:id="@+id/iv_header_bg"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:contentDescription="@string/content_description"
-                android:scaleType="fitXY"
-                android:src="@drawable/log" />
-
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar_settings_activity"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize">
+            android:layout_height="90dp">
 
 
-
-            </androidx.appcompat.widget.Toolbar>
 
         </FrameLayout>
 
@@ -134,15 +118,18 @@
             android:id="@+id/text_notifications"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_alignBottom="@+id/btn_cerrarSesion"
+            android:layout_marginBottom="615dp" />
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_settings_activity"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_alignTop="@+id/btn_cerrarSesion"
+            android:layout_marginTop="106dp">
+
+
+        </androidx.appcompat.widget.Toolbar>
 
 
     </RelativeLayout>

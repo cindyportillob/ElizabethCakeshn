@@ -32,5 +32,6 @@
     <dimen name="settings_user_image_size">150dp</dimen>
     <dimen name="settings_user_image_marginTop">-75dp</dimen>
     <dimen name="settings_user_picture_margin">3dp</dimen>
+    <dimen name="no_data_found_textSize">20sp</dimen>
 
 </resources>

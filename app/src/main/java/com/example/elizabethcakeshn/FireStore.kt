@@ -5,6 +5,7 @@ import android.net.Uri
 import android.util.Log
 import androidx.fragment.app.Fragment
 import com.example.elizabethcakes.utils.Constants
+import com.example.elizabethcakeshn.ui.dashboard.DashboardFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
@@ -14,7 +15,6 @@ import com.google.firebase.storage.StorageReference
 
 class FireStore {
 
-    private val mFirestore = FirebaseFirestore.getInstance()
 
 
     private val mFireStore = FirebaseFirestore.getInstance()
@@ -214,7 +214,7 @@ class FireStore {
                 }
 
                 when (fragment) {
-                    is ProductsFragment -> {
+                    is DashboardFragment -> {
                         fragment.successProductsListFromFireStore(productsList)
                     }
                 }

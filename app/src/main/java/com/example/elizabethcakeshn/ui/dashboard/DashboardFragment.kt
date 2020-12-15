@@ -12,6 +12,7 @@ import com.example.elizabethcakeshn.Product
 import com.example.elizabethcakeshn.R
 import com.example.elizabethcakeshn.SettingsActivity
 import com.example.elizabethcakeshn.ui.BaseFragment
+import com.example.elizabethcakeshn.ui.notifications.NotificationsFragment
 
 class DashboardFragment : BaseFragment() {
 
@@ -63,6 +64,7 @@ class DashboardFragment : BaseFragment() {
         super.onCreateOptionsMenu(menu, inflater)
     }
 
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.itemId
 
@@ -70,6 +72,16 @@ class DashboardFragment : BaseFragment() {
 
             R.id.action_add_product -> {
                 startActivity(Intent(activity, SettingsActivity::class.java))
+
+                return true
+            }
+
+
+        }
+        when (id){
+
+            R.id.action_perfil_edit -> {
+                startActivity(Intent(activity, NotificationsFragment::class.java))
 
                 return true
             }

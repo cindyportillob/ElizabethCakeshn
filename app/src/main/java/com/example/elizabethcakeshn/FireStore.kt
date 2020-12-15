@@ -80,8 +80,8 @@ class FireStore {
                         activity.userLoggedInSuccess(user)
                     }
                     is SettingsActivity -> {
-
-                    }
+                        activity.userDetailsSuccess(user)
+                        }
                 }
                 //Fin
             }
@@ -90,7 +90,11 @@ class FireStore {
                     is LoginActivity -> {
                         activity.hideProgressDialog()
                     }
+
+
                 }
+
+
 
             }
 

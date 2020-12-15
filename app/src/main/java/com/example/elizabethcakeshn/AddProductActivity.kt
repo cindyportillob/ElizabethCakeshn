@@ -4,6 +4,7 @@ import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -19,7 +20,7 @@ class AddProductActivity : BaseActivity1(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_product)
-        imageView5.setOnClickListener(this)
+        ImageView5.setOnClickListener(this)
 
     }
 
@@ -28,7 +29,7 @@ class AddProductActivity : BaseActivity1(), View.OnClickListener {
             when (v.id) {
 
                 // The permission code is similar to the user profile image selection.
-                R.id.imageView5 -> {
+                R.id.ImageView5 -> {
                     if (ContextCompat.checkSelfPermission(
                             this,
                             Manifest.permission.READ_EXTERNAL_STORAGE
@@ -56,6 +57,15 @@ class AddProductActivity : BaseActivity1(), View.OnClickListener {
                 }
             }
         }
+    }
+
+    private fun uploadProductImage() {
+        TODO("Not yet implemented")
+    }
+
+    private fun validateProductDetails(): Boolean {
+
+        return true
     }
 
     override fun onRequestPermissionsResult(
@@ -87,7 +97,7 @@ class AddProductActivity : BaseActivity1(), View.OnClickListener {
         ) {
 
             // Replace the add icon with edit icon once the image is selected.
-            imageView5.setImageDrawable(
+            ImageView5.setImageDrawable(
                 ContextCompat.getDrawable(
                     this@AddProductActivity,
                     R.drawable.ic_vector_edit
@@ -95,14 +105,11 @@ class AddProductActivity : BaseActivity1(), View.OnClickListener {
             )
 
             // The uri of selection image from phone storage.
-            mSelectedImageFileUri = data.data!!
+             val mSelectedImageFileUri = data.data!!
 
             try {
                 // Load the product image in the ImageView.
-                GlideLoader(this@AddProductActivity).loadProductPicture(
-                    mSelectedImageFileUri!!,
-                    iv_product_image
-                )
+                GlideLoader(this@AddProductActivity).loadProductPicture(mSelectedImageFileUri, ImageView5)
             } catch (e: IOException) {
                 e.printStackTrace()
             }

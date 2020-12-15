@@ -11,4 +11,9 @@
     tools:context="ui.notifications.NotificationsFragment">
 
 
+    <TextView
+        android:id="@+id/text_notifications"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
 </ScrollView>

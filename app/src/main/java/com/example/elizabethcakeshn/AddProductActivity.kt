@@ -156,7 +156,6 @@ class AddProductActivity : BaseActivity1(), View.OnClickListener {
 
 
 
-
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,

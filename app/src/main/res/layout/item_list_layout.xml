@@ -21,24 +21,23 @@
 
         <ImageView
             android:id="@+id/iv_item_image"
-                android:layout_width="@dimen/item_image_width"
-            android:layout_height="@dimen/item_image_height"
+            android:layout_width="110dp"
+            android:layout_height="98dp"
             android:contentDescription="@string/content_description"
             android:scaleType="fitXY" />
+
+        <TextView
+            android:id="@+id/ll_product_details"
+            android:layout_width="wrap_content"
+            android:layout_height="94dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="10dp" />
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/ll_product_details"
-        android:layout_width="160dp"
-        android:layout_height="94dp"
-        android:gravity="center"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="10dp">
 
-    </LinearLayout>
 
     <ImageButton
         android:id="@+id/ib_delete_product"
@@ -52,7 +51,7 @@
         android:src="@drawable/ic_vector_delete"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.914"
-        app:layout_constraintStart_toEndOf="@+id/ll_product_details"
+
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView

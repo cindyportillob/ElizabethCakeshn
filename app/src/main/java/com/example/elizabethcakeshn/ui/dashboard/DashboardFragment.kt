@@ -2,14 +2,11 @@ package com.example.elizabethcakeshn.ui.dashboard
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.*
-import android.widget.TextView
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.elizabethcakeshn.*
 import com.example.elizabethcakeshn.ui.BaseFragment
-import com.example.elizabethcakeshn.ui.notifications.NotificationsFragment
+import kotlinx.android.synthetic.main.fragment_dashboard.*
 
 class DashboardFragment : BaseFragment() {
 
@@ -23,8 +20,18 @@ class DashboardFragment : BaseFragment() {
 
     fun successProductsListFromFireStore(productsList: ArrayList<Product>) {
 
-        for (i in productsList){
-            Log.i("Product Name",i.title)
+        if (productsList.size > 0) {
+            rv_my_product_items.visibility = View.VISIBLE
+            tv_no_products_found.visibility = View.GONE
+
+            rv_my_product_items.layoutManager = LinearLayoutManager(activity)
+            rv_my_product_items.setHasFixedSize(true)
+
+            val adapterProducts = MyProductsListAdapter(requireActivity(), productsList)
+            rv_my_product_items.adapter = adapterProducts
+        } else {
+            rv_my_product_items.visibility = View.GONE
+            tv_no_products_found.visibility = View.VISIBLE
         }
 
     }

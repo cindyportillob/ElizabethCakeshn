@@ -3,6 +3,8 @@ package com.example.elizabethcakeshn.ui.dashboard
 import android.content.Intent
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.elizabethcakeshn.*
 import com.example.elizabethcakeshn.ui.BaseFragment
@@ -27,7 +29,7 @@ class DashboardFragment : BaseFragment() {
             rv_my_product_items.layoutManager = LinearLayoutManager(activity)
             rv_my_product_items.setHasFixedSize(true)
 
-            val adapterProducts = MyProductsListAdapter(requireActivity(), productsList)
+            val adapterProducts = MyProductsListAdapter(requireActivity(), productsList,this)
             rv_my_product_items.adapter = adapterProducts
         } else {
             rv_my_product_items.visibility = View.GONE
@@ -90,6 +92,59 @@ class DashboardFragment : BaseFragment() {
         
 
         return super.onOptionsItemSelected(item)
+    }
+
+    fun deleteProduct(productID: String) {
+        showAlertDialogToDeleteProduct(productID)
+
+
+    }
+
+    fun productDeleteSuccess() {
+
+
+
+        Toast.makeText(
+            requireActivity(),
+            resources.getString(R.string.product_delete_success_message),
+            Toast.LENGTH_SHORT
+        ).show()
+
+        // Get the latest products list from cloud firestore.
+        getProductListFromFireStore()
+    }
+
+    private fun showAlertDialogToDeleteProduct(productID: String) {
+
+        val builder = AlertDialog.Builder(requireActivity())
+        //set title for alert dialog
+        builder.setTitle(resources.getString(R.string.delete_dialog_title))
+        //set message for alert dialog
+        builder.setMessage(resources.getString(R.string.delete_dialog_message))
+        builder.setIcon(android.R.drawable.ic_dialog_alert)
+
+        //performing positive action
+        builder.setPositiveButton(resources.getString(R.string.yes)) { dialogInterface, _ ->
+
+
+
+            // Call the function of Firestore class.
+            FireStore().deleteProduct(this@DashboardFragment, productID)
+            // END
+
+            dialogInterface.dismiss()
+        }
+
+        //performing negative action
+        builder.setNegativeButton(resources.getString(R.string.no)) { dialogInterface, _ ->
+
+            dialogInterface.dismiss()
+        }
+        // Create the AlertDialog
+        val alertDialog: AlertDialog = builder.create()
+        // Set other dialog properties
+        alertDialog.setCancelable(false)
+        alertDialog.show()
     }
 
 

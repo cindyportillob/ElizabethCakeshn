@@ -80,5 +80,11 @@
     <dimen name="rv_item_price_marginTop">2dp</dimen>
     <dimen name="rv_item_price_textSize">12sp</dimen>
 
+    <string name="product_delete_success_message">Your product is deleted successfully.</string>
+    <string name="delete_dialog_title">Delete</string>
+    <string name="delete_dialog_message">Are you sure you want to delete the product?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
 
 </resources>

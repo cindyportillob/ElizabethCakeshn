@@ -29,24 +29,7 @@ class DashboardFragment : Fragment() {
         return root
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.dashboard_menu, menu)
-        super.onCreateOptionsMenu(menu, inflater)
-    }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val id = item.itemId
-
-        when (id) {
-
-            R.id.action_settings -> {
-
-                startActivity(Intent(activity, ProductsFragment::class.java))
-                return true
-            }
-        }
-        return super.onOptionsItemSelected(item)
-    }
 
 
 

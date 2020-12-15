@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.elizabethcakeshn.FireStore
 import com.example.elizabethcakeshn.Product
 import com.example.elizabethcakeshn.R
+import com.example.elizabethcakeshn.SettingsActivity
 import com.example.elizabethcakeshn.ui.BaseFragment
 
 class DashboardFragment : BaseFragment() {
@@ -55,6 +56,28 @@ class DashboardFragment : BaseFragment() {
 
 
         return root
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.add_product_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id = item.itemId
+
+        when (id){
+
+            R.id.action_add_product -> {
+                startActivity(Intent(activity, SettingsActivity::class.java))
+
+                return true
+            }
+
+
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
 

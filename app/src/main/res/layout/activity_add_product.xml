@@ -60,12 +60,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
+        android:layout_marginTop="177dp"
+        android:layout_marginBottom="20dp"
         android:contentDescription="@string/content_description"
         android:foreground="?attr/selectableItemBackgroundBorderless"
         android:padding="@dimen/add_update_product_icon_padding"
         android:src="@drawable/ic_vector_add_photo"
-        tools:layout_editor_absoluteX="345dp"
-        tools:layout_editor_absoluteY="227dp" />
+        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ImageView5"
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/editTextTextPersonName2"
@@ -111,7 +117,7 @@
         android:layout_height="49dp"
         android:layout_marginTop="36dp"
         android:background="@drawable/fondo_boton"
-        android:text="Agregar"
+        android:text="@string/btn_msj_agregar_producto"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName5" />

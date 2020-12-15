@@ -63,5 +63,7 @@
     <string name="err_msg_enter_product_quantity">Please enter product quantity.</string>
     <string name="product_uploaded_success_message">Your product is uploaded successfully.</string>
 
+    <string name="btn_msj_agregar_producto">Agregar al carrito</string>
+
 
 </resources>

@@ -60,6 +60,7 @@
 
         </FrameLayout>
         <Button
+            android:id="@+id/edit_boton"
             android:layout_width="80dp"
             android:layout_height="15dp"
             android:background="@drawable/fondo_boton"

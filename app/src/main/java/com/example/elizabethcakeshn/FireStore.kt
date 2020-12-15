@@ -79,6 +79,9 @@ class FireStore {
                         //llamar a una funcion de la actividad base para transferir el resultado
                         activity.userLoggedInSuccess(user)
                     }
+                    is SettingsActivity -> {
+                        activity.userDetailsSuccess(user)
+                        }
                 }
                 //Fin
             }
@@ -87,7 +90,11 @@ class FireStore {
                     is LoginActivity -> {
                         activity.hideProgressDialog()
                     }
+
+
                 }
+
+
 
             }
 

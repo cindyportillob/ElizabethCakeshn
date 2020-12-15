@@ -13,11 +13,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="ExtraText">
-        <activity android:name=".AddProductActivity"
+        <activity android:name=".SettingsActivity"
             android:screenOrientation="portrait"
-            ></activity>
+            android:theme="@style/actionbar"
+            >
+        </activity>
+        <activity
+            android:name=".AddProductActivity"
+            android:screenOrientation="portrait" />
         <activity android:name=".MainActivity2" />
-
         <activity
             android:name=".MainActivity"
             android:label="Elizabeth Cakes"

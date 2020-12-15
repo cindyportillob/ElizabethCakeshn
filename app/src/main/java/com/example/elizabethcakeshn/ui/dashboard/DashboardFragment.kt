@@ -7,12 +7,9 @@ import android.view.*
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.elizabethcakeshn.FireStore
-import com.example.elizabethcakeshn.MyProductsListAdapter
-import com.example.elizabethcakeshn.Product
-import com.example.elizabethcakeshn.R
+import com.example.elizabethcakeshn.*
 import com.example.elizabethcakeshn.ui.BaseFragment
-import kotlinx.android.synthetic.main.fragment_dashboard.*
+import com.example.elizabethcakeshn.ui.notifications.NotificationsFragment
 
 class DashboardFragment : BaseFragment() {
 
@@ -26,19 +23,10 @@ class DashboardFragment : BaseFragment() {
 
     fun successProductsListFromFireStore(productsList: ArrayList<Product>) {
 
-        if (productsList.size > 0) {
-            rv_my_product_items.visibility = View.VISIBLE
-            tv_no_products_found.visibility = View.GONE
-
-            rv_my_product_items.layoutManager = LinearLayoutManager(activity)
-            rv_my_product_items.setHasFixedSize(true)
-
-            val adapterProducts = MyProductsListAdapter(requireActivity(), productsList)
-            rv_my_product_items.adapter = adapterProducts
-        } else {
-            rv_my_product_items.visibility = View.GONE
-            tv_no_products_found.visibility = View.VISIBLE
+        for (i in productsList){
+            Log.i("Product Name",i.title)
         }
+
     }
 
     private fun getProductListFromFireStore() {
@@ -66,6 +54,35 @@ class DashboardFragment : BaseFragment() {
 
 
         return root
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.add_product_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id = item.itemId
+
+        when (id){
+
+            R.id.action_add_product -> {
+                startActivity(Intent(activity, AddProductActivity::class.java))
+
+                return true
+            }
+            R.id.action_perfil_edit -> {
+                startActivity(Intent(activity, SettingsActivity::class.java))
+
+                return true
+            }
+
+
+        }
+        
+
+        return super.onOptionsItemSelected(item)
     }
 
 

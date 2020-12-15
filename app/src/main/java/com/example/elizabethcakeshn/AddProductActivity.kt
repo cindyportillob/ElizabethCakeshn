@@ -95,12 +95,11 @@ class AddProductActivity : BaseActivity1(), View.OnClickListener {
             )
 
             // The uri of selection image from phone storage.
-            val mSelectedImageFileUri = data.data!!
+            mSelectedImageFileUri = data.data!!
 
             try {
                 // Load the product image in the ImageView.
-                GlideLoader(this@AddProductActivity)
-                    .loadProductPicture(
+                GlideLoader(this@AddProductActivity).loadProductPicture(
                     mSelectedImageFileUri!!,
                     iv_product_image
                 )

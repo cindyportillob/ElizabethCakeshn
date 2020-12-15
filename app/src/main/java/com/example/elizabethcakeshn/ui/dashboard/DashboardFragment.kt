@@ -7,10 +7,7 @@ import android.view.*
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.elizabethcakeshn.FireStore
-import com.example.elizabethcakeshn.Product
-import com.example.elizabethcakeshn.R
-import com.example.elizabethcakeshn.SettingsActivity
+import com.example.elizabethcakeshn.*
 import com.example.elizabethcakeshn.ui.BaseFragment
 import com.example.elizabethcakeshn.ui.notifications.NotificationsFragment
 
@@ -71,6 +68,11 @@ class DashboardFragment : BaseFragment() {
         when (id){
 
             R.id.action_add_product -> {
+                startActivity(Intent(activity, AddProductActivity::class.java))
+
+                return true
+            }
+            R.id.action_perfil_edit -> {
                 startActivity(Intent(activity, SettingsActivity::class.java))
 
                 return true
@@ -78,16 +80,7 @@ class DashboardFragment : BaseFragment() {
 
 
         }
-        when (id){
-
-            R.id.action_perfil_edit -> {
-                startActivity(Intent(activity, NotificationsFragment::class.java))
-
-                return true
-            }
-
-
-        }
+        
 
         return super.onOptionsItemSelected(item)
     }

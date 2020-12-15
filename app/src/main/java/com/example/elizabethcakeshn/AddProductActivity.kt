@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.elizabethcakes.utils.Constants
+import com.example.elizabethcakeshn.utils.GlideLoader
 import kotlinx.android.synthetic.main.activity_add_product.*
 import java.io.IOException
 
@@ -94,11 +95,12 @@ class AddProductActivity : BaseActivity1(), View.OnClickListener {
             )
 
             // The uri of selection image from phone storage.
-            mSelectedImageFileUri = data.data!!
+            val mSelectedImageFileUri = data.data!!
 
             try {
                 // Load the product image in the ImageView.
-                GlideLoader(this@AddProductActivity).loadProductPicture(
+                GlideLoader(this@AddProductActivity)
+                    .loadProductPicture(
                     mSelectedImageFileUri!!,
                     iv_product_image
                 )

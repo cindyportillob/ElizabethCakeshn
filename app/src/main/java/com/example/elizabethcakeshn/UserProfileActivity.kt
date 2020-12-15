@@ -14,6 +14,7 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.elizabethcakes.utils.Constants
+import com.example.elizabethcakeshn.utils.GlideLoader
 import com.google.firebase.firestore.auth.User
 import kotlinx.android.synthetic.main.activity_user_profile.*
 import java.io.IOException
@@ -140,7 +141,8 @@ class UserProfileActivity : BaseActivity1(), View.OnClickListener {
                     try {
                         selectedImageFileUri = data.data!!
 
-                        iv_user_photo.setImageURI(selectedImageFileUri)
+                        //iv_user_photo.setImageURI(selectedImageFileUri)
+                        GlideLoader(this).loadUserPicture(selectedImageFileUri!!,iv_user_photo)
                     }catch (e: IOException){
                         e.printStackTrace()
                         Toast.makeText(

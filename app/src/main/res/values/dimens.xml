@@ -28,7 +28,7 @@
     <dimen name="add_update_product_icon_padding">16dp</dimen>
     <dimen name="toolbar_title_paddingStart">-25dp</dimen>
 <dimen name="toolbar_title_text_size">18sp</dimen>
-    <dimen name="header_image_height">200dp</dimen>
+    <dimen name="header_image_height">250dp</dimen>
     <dimen name="settings_user_image_size">150dp</dimen>
     <dimen name="settings_user_image_marginTop">-75dp</dimen>
     <dimen name="settings_user_picture_margin">3dp</dimen>

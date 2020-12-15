@@ -25,4 +25,6 @@ class NotificationsFragment : Fragment() {
 
         return root
     }
+
+
 }

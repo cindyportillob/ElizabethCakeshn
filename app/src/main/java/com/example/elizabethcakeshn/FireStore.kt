@@ -98,15 +98,20 @@ class FireStore {
                 }
                 //Fin
             }
-            .addOnFailureListener{e ->
+            .addOnFailureListener{ e ->
                 when(activity){
                     is LoginActivity -> {
                         activity.hideProgressDialog()
                     }
+                    is SettingsActivity ->{
 
-
+                    }
                 }
-
+                Log.e(
+                    activity.javaClass.simpleName,
+                    "Error al obtener detalles de usuario",
+                    e
+                )
 
 
             }

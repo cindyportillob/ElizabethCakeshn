@@ -34,9 +34,7 @@ class UserProfileActivity : BaseActivity1(), View.OnClickListener {
             detalleUsuario = intent.getParcelableExtra(Constants.EXTRA_USER_DETAILS)!!
         }
 
-        et_first_name.setText(detalleUsuario.Nombre)
-        et_email.setText(detalleUsuario.Email)
-        et_email.isEnabled = false
+
 
         if (detalleUsuario.Pcompleto == 0){
             tv_title.text = "Completar Perfil"
@@ -44,9 +42,9 @@ class UserProfileActivity : BaseActivity1(), View.OnClickListener {
             iv_user_photo.setOnClickListener(this@UserProfileActivity)
             btn_submit.setOnClickListener(this@UserProfileActivity)
         }else{
-            setupActionBar()
+            //setupActionBar()
             tv_title.text = resources.getString(R.string.title_edit_profile)
-
+            et_first_name.isEnabled = false
             et_first_name.setText("Luis Cueva")
             et_email.isEnabled = false
             et_email.setText("luisc_cuevaordo@hotmail.com")
@@ -131,18 +129,16 @@ class UserProfileActivity : BaseActivity1(), View.OnClickListener {
                 R.id.btn_submit ->{
                     if (validateUserProfileDetails()){
                         showProgressDialog("Por favor Espera")
-                        if (selectedImageFileUri != null){
+
                             if (selectedImageFileUri != null){
                                 FireStore().uploadImageToCloudStore(
                                     this@UserProfileActivity,
                                     selectedImageFileUri, Constants. USER_PROFILE_IMAGE
                                 )
-                            }else{
-                                updateUserProfileDetails()
+                                }else{
+                                    updateUserProfileDetails()
                         }
                         }
-
-                    }
                 }
             }
         }

@@ -60,7 +60,7 @@ class SettingsActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    private fun setupActionBar() {
+    /*private fun setupActionBar() {
         setSupportActionBar(toolbar_settings_activity)
         val actionBar = supportActionBar
         if (actionBar != null){
@@ -68,7 +68,7 @@ class SettingsActivity : AppCompatActivity(), View.OnClickListener {
             actionBar.setHomeAsUpIndicator(R.drawable.ic_white_color_black_24dp)
         }
         toolbar_settings_activity.setNavigationOnClickListener { onBackPressed() }
-    }
+    }*/
 
     private fun getUserDetails(){
        // showProgressDialog("Por favor espera")

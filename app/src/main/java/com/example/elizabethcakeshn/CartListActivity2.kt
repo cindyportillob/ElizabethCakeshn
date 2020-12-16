@@ -9,13 +9,13 @@ import kotlinx.android.synthetic.main.activity_cart_list2.*
 
 class CartListActivity2 : BaseActivity1(){
     private lateinit var mProductsList: ArrayList<Product>
-    private lateinit var mCartListItems: ArrayList<CartItem>
+    private lateinit var mCartListItems: ArrayList<Cart>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cart_list2)
 
-        getCartItemList()
+
     }
 
    private fun setupActionBar() {
@@ -31,18 +31,18 @@ class CartListActivity2 : BaseActivity1(){
         toolbar_cart_list_activity.setNavigationOnClickListener { onBackPressed() }
     }
 
-    fun successCartItemList(cartList: ArrayList<CartItem>){
+    fun successCartItemList(cartList: ArrayList<Cart>){
         hideProgressDialog()
 
 
         for (product in mProductsList){
-            for (cart in cartList){
-                if (product.product_id == cart.product_id){
+            for (cartItem in cartList){
+                if (product.product_id == cartItem.product_id){
 
-                    cart.stock_quantity = product.stock_quantity
+                    cartItem.stock_quantity = product.stock_quantity
 
                     if (product.stock_quantity.toInt()  == 0){
-                        cart.cart_quantity = product.stock_quantity
+                        cartItem.cart_quantity = product.stock_quantity
                     }
 
                 }
@@ -59,7 +59,7 @@ class CartListActivity2 : BaseActivity1(){
             rv_cart_items_list.layoutManager = LinearLayoutManager(this@CartListActivity2)
             rv_cart_items_list.setHasFixedSize(true)
 
-            val cartListAdapter = CartItemsListAdapter(this@CartListActivity2, mCartListItems)
+            val cartListAdapter = CartItemsListAdapter(this@CartListActivity2, cartList)
 
             rv_cart_items_list.adapter = cartListAdapter
             var subTotal: Double = 0.0
@@ -115,16 +115,16 @@ class CartListActivity2 : BaseActivity1(){
         FireStore().getCarlList(this@CartListActivity2)
     }
 
-    fun succesProdcutsListFromFireStore(producstList: ArrayList<Product>){
-
-        mProductsList = producstList
+    fun successProductsListFromFireStore(productList:ArrayList<Product>){
+        hideProgressDialog()
+        mProductsList = productList
 
         getCartItemList()
     }
 
     private  fun getProductList (){
         showProgressDialog(resources.getString(R.string.please_wait))
-        FireStore().getAllProductsList(this@CartListActivity2)
+        FireStore().getAllProductsList(this)
     }
 
 

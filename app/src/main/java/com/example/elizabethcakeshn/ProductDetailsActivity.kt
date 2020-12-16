@@ -69,7 +69,7 @@ class ProductDetailsActivity : BaseActivity1(), View.OnClickListener {
      */
     private fun addToCart() {
 
-        val addToCart = CartItem(
+        val addToCart = Cart(
             FireStore().getCurrentUserID(),
             mProductId,
             mProductDetails.title,

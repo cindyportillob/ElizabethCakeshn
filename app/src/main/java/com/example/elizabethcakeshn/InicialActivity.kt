@@ -19,7 +19,7 @@ class InicialActivity : AppCompatActivity() {
 
         Handler().postDelayed(
             {
-                startActivity(Intent(this@InicialActivity,LoginActivity::class.java))
+                startActivity(Intent(this@InicialActivity,MainActivity::class.java))
                 finish()
             },
             //Tiempo

@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.item_cart_layout.view.*
 
 class CartItemsListAdapter (
     private  val context: Context,
-    private var list: ArrayList<CartItem>
+    private var list: ArrayList<Cart>
 ): RecyclerView.Adapter<RecyclerView.ViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -61,52 +61,54 @@ class CartItemsListAdapter (
                 )
             }
 
-            holder.itemView.ib_delete_cart_item.setOnClickListener {
+            holder.itemView.ib_remove_cart_item.setOnClickListener {
 
-
-
-                when (context) {
-                    is CartListActivity2 -> {
-                        context.showProgressDialog(context.resources.getString(R.string.please_wait))
-                    }
-                }
-
-                FireStore().removeItemFromCart(context, model.id)
-
-            }
-
-            holder.itemView.ib_remove_cart_item.setOnClickListener{
-                if(model.cart_quantity == "1"){
+                // TODO Step 6: Call the update or remove function of firestore class based on the cart quantity.
+                // START
+                if (model.cart_quantity == "1") {
                     FireStore().removeItemFromCart(context, model.id)
-                }else {
+                } else {
 
                     val cartQuantity: Int = model.cart_quantity.toInt()
+
                     val itemHashMap = HashMap<String, Any>()
 
                     itemHashMap[Constants.CART_QUANTITY] = (cartQuantity - 1).toString()
 
-                    if (context is CartListActivity2){
-                        context.showProgressDialog(context.resources.getString(R.string.please_wait))
+                    // Show the progress dialog.
+
+                    if (context is CartListActivity2) {
+
                     }
 
                     FireStore().updateMyCart(context, model.id, itemHashMap)
                 }
+                // END
             }
-            holder.itemView.ib_add_cart_item.setOnClickListener{
+            // END
 
+            // TODO Step 7: Assign the click event to the ib_add_cart_item.
+            // START
+            holder.itemView.ib_add_cart_item.setOnClickListener {
+
+                // TODO Step 8: Call the update function of firestore class based on the cart quantity.
+                // START
                 val cartQuantity: Int = model.cart_quantity.toInt()
 
-                if (cartQuantity <model.stock_quantity.toInt()){
+                if (cartQuantity < model.stock_quantity.toInt()) {
+
                     val itemHashMap = HashMap<String, Any>()
+
                     itemHashMap[Constants.CART_QUANTITY] = (cartQuantity + 1).toString()
 
-                    if (context is CartListActivity2){
+                    // Show the progress dialog.
+                    if (context is CartListActivity2) {
                         context.showProgressDialog(context.resources.getString(R.string.please_wait))
-
                     }
+
                     FireStore().updateMyCart(context, model.id, itemHashMap)
-                }else{
-                    if(context is CartListActivity2){
+                } else {
+                    if (context is CartListActivity2) {
                         context.showErrorSnackBar(
                             context.resources.getString(
                                 R.string.msg_for_available_stock,
@@ -116,10 +118,21 @@ class CartItemsListAdapter (
                         )
                     }
                 }
-
+                // END
             }
+            // END
 
 
+            holder.itemView.ib_delete_cart_item.setOnClickListener {
+
+                when (context) {
+                    is CartListActivity2 -> {
+                        context.showProgressDialog(context.resources.getString(R.string.please_wait))
+                    }
+                }
+
+                FireStore().removeItemFromCart(context, model.id)
+            }
         }
     }
 

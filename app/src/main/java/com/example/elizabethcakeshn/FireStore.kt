@@ -19,7 +19,6 @@ import com.google.firebase.storage.StorageReference
 class FireStore {
 
 
-
     private val mFireStore = FirebaseFirestore.getInstance()
 
 
@@ -46,23 +45,23 @@ class FireStore {
             }
     }
 
-    fun getCurrentUserID():String{
+    fun getCurrentUserID(): String {
         //crear instancia de currentUser a traves de FirebaseAuth
-        val currentUser= FirebaseAuth.getInstance().currentUser
+        val currentUser = FirebaseAuth.getInstance().currentUser
 
         //creamos variable para asignar el currentUserId en caso que sea nulo, saldra en blanco
-        var currentUserId= ""
-        if(currentUser != null){
+        var currentUserId = ""
+        if (currentUser != null) {
             currentUserId = currentUser.uid
         }
         return currentUserId
     }
 
 
-    fun getUserDetails(activity: Activity){
+    fun getUserDetails(activity: Activity) {
 
         mFireStore.collection(Constants.USERS)
-                //El documento id para llegar al campo de user
+            //El documento id para llegar al campo de user
             .document(getCurrentUserID())
             .get()
             .addOnSuccessListener { document ->
@@ -83,23 +82,23 @@ class FireStore {
                     "${user.Nombre}"
                 )
                 editor.apply()
-                when(activity){
+                when (activity) {
                     is LoginActivity -> {
                         //llamar a una funcion de la actividad base para transferir el resultado
                         activity.userLoggedInSuccess(user)
                     }
                     is SettingsActivity -> {
                         activity.userDetailsSuccess(user)
-                        }
+                    }
                 }
                 //Fin
             }
-            .addOnFailureListener{ e ->
-                when(activity){
+            .addOnFailureListener { e ->
+                when (activity) {
                     is LoginActivity -> {
                         activity.hideProgressDialog()
                     }
-                    is SettingsActivity ->{
+                    is SettingsActivity -> {
 
                     }
                 }
@@ -140,22 +139,21 @@ class FireStore {
     }
 
 
-    fun updateUserProfileData(activity: Activity, userHashMap: HashMap<String, Any>){
+    fun updateUserProfileData(activity: Activity, userHashMap: HashMap<String, Any>) {
         mFireStore.collection(Constants.USERS)
             .document(getCurrentUserID())
             .update(userHashMap)
             .addOnSuccessListener {
-                when(activity){
-                    is UserProfileActivity ->{
+                when (activity) {
+                    is UserProfileActivity -> {
                         activity.userProfileUpdateSuccess()
                     }
                 }
 
 
-            }.addOnFailureListener{
-                    e->
-                when(activity){
-                    is UserProfileActivity ->{
+            }.addOnFailureListener { e ->
+                when (activity) {
+                    is UserProfileActivity -> {
                         activity.hideProgressDialog()
                     }
                 }
@@ -168,7 +166,7 @@ class FireStore {
             }
     }
 
-    fun removeItemFromCart(context: Context, cart_id: String){
+    fun removeItemFromCart(context: Context, cart_id: String) {
         mFireStore.collection(Constants.CART_ITEMS)
             .document(cart_id)
             .delete()
@@ -197,7 +195,7 @@ class FireStore {
             }
     }
 
-    fun updateMyCart(context: Context, cart_id: String, itemHashMap: HashMap<String, Any>){
+    fun updateMyCart(context: Context, cart_id: String, itemHashMap: HashMap<String, Any>) {
         mFireStore.collection(Constants.CART_ITEMS)
             .document(cart_id)
             .update(itemHashMap)
@@ -210,25 +208,38 @@ class FireStore {
                 }
 
 
-            }.addOnFailureListener{
+            }.addOnFailureListener { e ->
+                // Hide the progress dialog if there is any error.
+                when (context) {
+                    is CartListActivity2 -> {
+
+                    }
+                }
+
+                Log.e(
+                    context.javaClass.simpleName,
+                    "Error while updating the cart item.",
+                    e
+                )
+
 
             }
     }
 
-    fun getAllProductsList(activity: CartListActivity2){
+    fun getAllProductsList(activity: CartListActivity2) {
         mFireStore.collection(Constants.PRODUCTS)
             .get()
             .addOnSuccessListener { document ->
                 Log.e("Products List", document.documents.toString())
                 val productsList: ArrayList<Product> = ArrayList()
-                for (i in document.documents){
+                for (i in document.documents) {
                     val product = i.toObject(Product::class.java)
                     product!!.product_id = i.id
 
                     productsList.add(product)
                 }
 
-                activity.succesProdcutsListFromFireStore(productsList)
+                activity.successProductsListFromFireStore(productsList)
 
             }
             .addOnFailureListener { e ->
@@ -240,11 +251,11 @@ class FireStore {
     }
 
 
-    fun uploadImageToCloudStore(activity: Activity, imageFileURI:Uri?,imageType:String){
+    fun uploadImageToCloudStore(activity: Activity, imageFileURI: Uri?, imageType: String) {
         val sRef: StorageReference = FirebaseStorage.getInstance().reference.child(
             imageType
-                    + System.currentTimeMillis()+"."
-        + Constants.getFileExtension(
+                    + System.currentTimeMillis() + "."
+                    + Constants.getFileExtension(
                 activity,
                 imageFileURI
             )
@@ -256,24 +267,26 @@ class FireStore {
                 taskSnapshot.metadata!!.reference!!.downloadUrl.toString()
             )
             taskSnapshot.metadata!!.reference!!.downloadUrl
-                .addOnSuccessListener { uri->
-                    Log.e("URL de imagen Descargable",
-                    uri.toString())
-                    when(activity){
-                        is UserProfileActivity ->{
+                .addOnSuccessListener { uri ->
+                    Log.e(
+                        "URL de imagen Descargable",
+                        uri.toString()
+                    )
+                    when (activity) {
+                        is UserProfileActivity -> {
                             activity.imageUploadSuccess(uri.toString())
                         }
-                        is AddProductActivity->{
+                        is AddProductActivity -> {
                             activity.imageUploadSuccess(uri.toString())
 
                         }
                     }
                 }
         }
-            .addOnFailureListener{exception ->
+            .addOnFailureListener { exception ->
 
-                when(activity){
-                    is UserProfileActivity->{
+                when (activity) {
+                    is UserProfileActivity -> {
                         activity.hideProgressDialog()
                     }
                 }
@@ -336,6 +349,17 @@ class FireStore {
                     }
                 }
             }
+            .addOnFailureListener { e ->
+                // Hide the progress dialog if there is any error based on the base class instance.
+                when (fragment) {
+                    is DashboardFragment -> {
+
+                    }
+                }
+
+                Log.e("Get Product List", "Error while getting product list.", e)
+            }
+
 
     }
 
@@ -354,15 +378,15 @@ class FireStore {
 
             }
             .addOnFailureListener { e ->
-            // Hide the progress dialog if there is an error.
-            activity.hideProgressDialog()
+                // Hide the progress dialog if there is an error.
+                activity.hideProgressDialog()
 
-            Log.e(
-                activity.javaClass.simpleName,
-                "Error while checking the existing cart list.",
-                e
-            )
-        }
+                Log.e(
+                    activity.javaClass.simpleName,
+                    "Error while checking the existing cart list.",
+                    e
+                )
+            }
 
     }
 
@@ -395,12 +419,22 @@ class FireStore {
             }
     }
 
-    fun addCartItems(activity: ProductDetailsActivity, addToCart:CartItem){
+    fun addCartItems(activity: ProductDetailsActivity, addToCart:Cart){
         mFireStore.collection(Constants.CART_ITEMS)
             .document()
             .set(addToCart, SetOptions.merge())
             .addOnSuccessListener {
                 activity.addToCartSuccess()
+            }
+            .addOnFailureListener { e ->
+
+                activity.hideProgressDialog()
+
+                Log.e(
+                    activity.javaClass.simpleName,
+                    "Error while creating the document for cart item.",
+                    e
+                )
             }
 
     }
@@ -413,10 +447,10 @@ class FireStore {
             .get()
             .addOnSuccessListener { document ->
                 Log.e(activity.javaClass.simpleName, document.documents.toString())
-                val list: ArrayList<CartItem> = ArrayList()
+                val list: ArrayList<Cart> = ArrayList()
 
                 for (i in document.documents){
-                    val cartItem = i.toObject(CartItem::class.java)!!
+                    val cartItem = i.toObject(Cart::class.java)!!
                     cartItem.id = i.id
 
                     list.add(cartItem)
@@ -429,6 +463,16 @@ class FireStore {
                     }
                 }
             }
+            .addOnFailureListener { e ->
+                // Hide the progress dialog if there is an error based on the activity instance.
+                when (activity) {
+                    is CartListActivity2 -> {
+
+                    }
+                }
+
+                Log.e(activity.javaClass.simpleName, "Error while getting the cart list items.", e)
+            }
 
 
     }
@@ -439,10 +483,20 @@ class FireStore {
             .delete()
             .addOnSuccessListener {
 
+                // Notify the success result to the base class.
                 fragment.productDeleteSuccess()
-
             }
+            .addOnFailureListener { e ->
 
+                // Hide the progress dialog if there is an error.
+
+
+                Log.e(
+                    fragment.requireActivity().javaClass.simpleName,
+                    "Error while deleting the product.",
+                    e
+                )
+            }
     }
 
 

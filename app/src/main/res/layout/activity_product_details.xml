@@ -19,14 +19,14 @@
             android:id="@+id/tv_title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
             android:gravity="center"
             android:paddingStart="@dimen/toolbar_title_paddingStart"
             android:paddingEnd="0dp"
-            android:text="@string/title_product_details"
+            android:text="DETALLE DE PRODUCTO"
             android:textColor="@color/colorWhite"
             android:textSize="@dimen/toolbar_title_text_size"
-            android:textStyle="bold"
-            android:layout_marginTop="20dp"/>
+            android:textStyle="bold" />
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -73,7 +73,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/item_value_text_color"
                     android:textSize="@dimen/product_details_title_textSize"
-                    tools:text="Product Title" />
+                    tools:text="Titulo de Producto" />
 
                 <TextView
                     android:id="@+id/tv_product_details_price"
@@ -81,7 +81,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/item_value_text_color"
                     android:textSize="@dimen/product_details_price_textSize"
-                    tools:text="$100" />
+                    tools:text="LPS 100" />
             </LinearLayout>
 
             <TextView
@@ -89,7 +89,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/product_details_label_margin"
-                android:text="@string/lbl_product_description"
+                android:text="Descripcion del Producto"
                 android:textColor="@color/item_value_text_color"
                 android:textSize="@dimen/product_details_label_textSize"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -125,7 +125,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/product_details_stock_quantity_paddingStartEnd"
-                    android:text="@string/lbl_product_details_stock_quantity"
+                    android:text="Stock"
                     android:textColor="@color/item_value_text_color"
                     android:textSize="@dimen/product_details_label_textSize" />
 
@@ -157,7 +157,7 @@
                 android:gravity="center"
                 android:paddingTop="@dimen/btn_padding"
                 android:paddingBottom="@dimen/btn_padding"
-                android:text="@string/btn_lbl_add_to_cart"
+                android:text="Agregar al Carrito"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/btn_textSize"
                 android:visibility="gone"
@@ -169,19 +169,18 @@
 
             <Button
                 android:id="@+id/btn_go_to_cart"
-                android:layout_width="370dp"
-                android:layout_height="43dp"
+                android:layout_width="379dp"
+                android:layout_height="48dp"
                 android:background="@drawable/fondo_boton"
                 android:text="Button"
                 android:textColor="@color/blanco"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.39"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/btn_add_to_cart"
-                app:layout_constraintVertical_bias="0.079"
-                tools:text="@string/btn_lbl_go_to_cart" />
+                app:layout_constraintVertical_bias="0.109"
+                tools:text="Ir al Carrito" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

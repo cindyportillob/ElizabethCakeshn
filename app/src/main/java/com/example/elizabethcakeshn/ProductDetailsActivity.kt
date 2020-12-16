@@ -126,7 +126,7 @@ class ProductDetailsActivity : BaseActivity1(), View.OnClickListener {
         Toast.makeText(
             this@ProductDetailsActivity,
             resources.getString(R.string.success_message_item_added_to_cart),
-            Toast.LENGTH_LONG
+            Toast.LENGTH_LONG//
         ).show()
     }
 

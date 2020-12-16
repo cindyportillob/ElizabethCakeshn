@@ -155,7 +155,7 @@ class ProductDetailsActivity : BaseActivity1(), View.OnClickListener {
             }
             when(v.id){
                 R.id.btn_go_to_cart -> {
-                    startActivity(Intent(this@ProductDetailsActivity, CartListActivity::class.java))
+                    startActivity(Intent(this@ProductDetailsActivity, CartListActivity2::class.java))
 
                 }
                 }

@@ -72,9 +72,8 @@ class DashboardFragment : BaseFragment() {
 
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val id = item.itemId
 
-        when (id){
+        when (item.itemId){
 
             R.id.action_add_product -> {
                 startActivity(Intent(activity, AddProductActivity::class.java))
@@ -83,6 +82,11 @@ class DashboardFragment : BaseFragment() {
             }
             R.id.action_perfil_edit -> {
                 startActivity(Intent(activity, SettingsActivity::class.java))
+
+                return true
+            }
+            R.id.action_cart_menu -> {
+                startActivity(Intent(activity, CartListActivity2::class.java))
 
                 return true
             }

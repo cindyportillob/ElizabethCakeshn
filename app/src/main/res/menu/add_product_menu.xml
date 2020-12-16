@@ -8,9 +8,15 @@
         android:title="Agregar Producto"
         app:showAsAction="always" />
     <item
+        android:id="@+id/action_cart_menu"
+        android:icon="@drawable/ic_vector_cart"
+        android:title="Perfil"
+        app:showAsAction="always" />
+    <item
         android:id="@+id/action_perfil_edit"
         android:icon="@drawable/ic_baseline_person_24"
         android:title="Perfil"
         app:showAsAction="always" />
+
 
 </menu>

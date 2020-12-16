@@ -324,6 +324,33 @@ class FireStore {
 
     }
 
+
+
+    fun getCarlList(activity: Activity){
+        mFireStore.collection(Constants.CART_ITEMS)
+            .whereEqualTo(Constants.USER_ID, getCurrentUserID())
+            .get()
+            .addOnSuccessListener { document ->
+                Log.e(activity.javaClass.simpleName, document.documents.toString())
+                val list: ArrayList<CartItem> = ArrayList()
+
+                for (i in document.documents){
+                    val cartItem = i.toObject(CartItem::class.java)!!
+                    cartItem.id = i.id
+
+                    list.add(cartItem)
+                }
+
+                when(activity){
+                    is CartListActivity2 ->{
+                        activity.successCartItemList(list)
+
+                    }
+                }
+            }
+
+
+    }
     fun deleteProduct(fragment: DashboardFragment, productId: String) {
 
         mFireStore.collection(Constants.PRODUCTS)

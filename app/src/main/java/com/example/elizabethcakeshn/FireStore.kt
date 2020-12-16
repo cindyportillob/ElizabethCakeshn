@@ -333,7 +333,7 @@ class FireStore {
 
     }
 
-    /*fun checkIfItemExistInCart(activity: ProductDetailsActivity, productId: String){
+    fun checkIfItemExistInCart(activity: ProductDetailsActivity, productId: String){
         mFireStore.collection(Constants.CART_ITEMS)
             .whereEqualTo(Constants.USER_ID, getCurrentUserID())
             .whereEqualTo(Constants.PRODUCT_ID, productId)
@@ -348,7 +348,7 @@ class FireStore {
 
             }
 
-    }*/
+    }
 
     fun getDashboardItemsList(fragment: HomeFragment) {
         // The collection name for PRODUCTS
@@ -423,10 +423,20 @@ class FireStore {
             .delete()
             .addOnSuccessListener {
 
+                // Notify the success result to the base class.
                 fragment.productDeleteSuccess()
-
             }
+            .addOnFailureListener { e ->
 
+                // Hide the progress dialog if there is an error.
+
+
+                Log.e(
+                    fragment.requireActivity().javaClass.simpleName,
+                    "Error while deleting the product.",
+                    e
+                )
+            }
     }
 
 

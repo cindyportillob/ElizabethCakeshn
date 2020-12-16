@@ -2,16 +2,10 @@ package com.example.elizabethcakeshn
 
 
 import android.os.Bundle
-import android.util.Log
-import com.example.elizabethcakeshn.R
-import com.example.elizabethcakeshn.FireStore
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.elizabethcakes.utils.Constants
-import com.example.elizabethcakeshn.utils.GlideLoader
 import kotlinx.android.synthetic.main.activity_cart_list2.*
-import kotlinx.android.synthetic.main.activity_product_details.*
 
 class CartListActivity2 : BaseActivity1(){
     private lateinit var mProductsList: ArrayList<Product>
@@ -21,10 +15,10 @@ class CartListActivity2 : BaseActivity1(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cart_list2)
 
-        //getCartItemList()
+        getCartItemList()
     }
 
-   /* private fun setupActionBar() {
+   private fun setupActionBar() {
 
         setSupportActionBar(toolbar_cart_list_activity)
 
@@ -35,7 +29,7 @@ class CartListActivity2 : BaseActivity1(){
         }
 
         toolbar_cart_list_activity.setNavigationOnClickListener { onBackPressed() }
-    }*/
+    }
 
     fun successCartItemList(cartList: ArrayList<CartItem>){
         hideProgressDialog()
@@ -132,6 +126,8 @@ class CartListActivity2 : BaseActivity1(){
         showProgressDialog(resources.getString(R.string.please_wait))
         FireStore().getAllProductsList(this)
     }
+
+
 
 
 

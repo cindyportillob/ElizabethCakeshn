@@ -95,15 +95,15 @@
     <string name="btn_lbl_go_to_cart">GO TO CART</string>
 
     <string name="title_my_cart">MI CARRITO DE COMPRAS</string>
-    <string name="no_cart_item_found">No item found in cart!</string>
+    <string name="no_cart_item_found">No se encontro nada en el carrito!</string>
     <string name="lbl_subtotal">Subtotal</string>
-    <string name="lbl_shipping_charge">Shipping Charge</string>
-    <string name="lbl_total_amount">Total Amount</string>
-    <string name="btn_lbl_checkout">Checkout</string>
-    <string name="action_cart">My Cart</string>
+    <string name="lbl_shipping_charge">Precio de envio</string>
+    <string name="lbl_total_amount">Total</string>
+    <string name="btn_lbl_checkout">Comprar</string>
+    <string name="action_cart">Mi Carrito</string>
 
-    <string name="lbl_out_of_stock">OUT OF STOCK</string>
-    <string name="msg_item_removed_successfully">Item removed successfully.</string>
+    <string name="lbl_out_of_stock">No hay en Stock</string>
+    <string name="msg_item_removed_successfully">Se removio correctamente</string>
 
 
     <!--TODO Step 9: Add the string resources to the strings.xml file.-->

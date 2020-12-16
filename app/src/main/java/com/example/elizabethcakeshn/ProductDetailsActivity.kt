@@ -50,6 +50,9 @@ class ProductDetailsActivity : BaseActivity1(), View.OnClickListener {
         btn_go_to_cart.setOnClickListener(this)
 
         getProductDetails()
+
+        btn_add_to_cart.setOnClickListener(this)
+        btn_go_to_cart.setOnClickListener(this)
     }
 
     private fun getProductDetails() {
@@ -58,8 +61,16 @@ class ProductDetailsActivity : BaseActivity1(), View.OnClickListener {
         //showProgressDialog(resources.getString(R.string.please_wait))
 
         // Call the function of FirestoreClass to get the product details.
-        //FireStore().getProductDetails(this@ProductDetailsActivity, mProductId)//////////////////////////////////
+        FireStore().getProductDetails(this, mProductId)
+
     }
+
+    /*fun productExistsInCart(){
+        hideProgressDialog()
+        btn_add_to_cart.visibility = View.GONE
+        btn_go_to_cart.visibility = View.VISIBLE
+
+    }*/
 
     fun productDetailsSuccess(product: Product) {
 
@@ -77,7 +88,7 @@ class ProductDetailsActivity : BaseActivity1(), View.OnClickListener {
         tv_product_details_stock_quantity.text = product.stock_quantity
 
 
-        if(product.stock_quantity.toInt() == 0){
+        /*if(product.stock_quantity.toInt() == 0){
 
             // Hide Progress dialog.
             hideProgressDialog()
@@ -94,16 +105,16 @@ class ProductDetailsActivity : BaseActivity1(), View.OnClickListener {
                     R.color.colorSnackBarError
                 )
             )
-        }else{
+        */
 
-            // There is no need to check the cart list if the product owner himself is seeing the product details.
-            if (FireStore().getCurrentUserID() == product.user_id) {
-                // Hide Progress dialog.
-                hideProgressDialog()
-            } else {
-                //FireStore().checkIfItemExistInCart(this@ProductDetailsActivity, mProductId)/////////////////////////////
-            }
-        }
+        // There is no need to check the cart list if the product owner himself is seeing the product details.
+            //if (FireStore().getCurrentUserID() == product.user_id) {
+            // Hide Progress dialog.
+             //   hideProgressDialog()
+            //}// else {
+            //FireStore().checkIfItemExistInCart(this@ProductDetailsActivity, mProductId)
+
+        //}
     }
 
     private fun addToCart (){
@@ -118,7 +129,7 @@ class ProductDetailsActivity : BaseActivity1(), View.OnClickListener {
         )
 
         showProgressDialog(resources.getString(R.string.please_wait))
-        FireStore().addCartItems(this, cartItem)
+        FireStore().addCartItems(this@ProductDetailsActivity, cartItem)
     }
 
     fun addToCartSuccess(){
@@ -128,6 +139,7 @@ class ProductDetailsActivity : BaseActivity1(), View.OnClickListener {
             resources.getString(R.string.success_message_item_added_to_cart),
             Toast.LENGTH_LONG//
         ).show()
+
     }
 
 

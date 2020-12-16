@@ -22,11 +22,7 @@ class FireStore {
 
     private val mFireStore = FirebaseFirestore.getInstance()
 
-    // TODO Step 7: Create a function to access the Cloud Firestore and create a collection.
-    // START
-    /**
-     * A function to make an entry of the registered user in the FireStore database.
-     */
+
     fun registerUser(activity: Registro, userInfo: Users) {
 
         // The "users" is collection name. If the collection is already created then it will not create the same one again.
@@ -116,6 +112,31 @@ class FireStore {
 
             }
 
+    }
+
+    fun getProductDetails(activity: ProductDetailsActivity, productId: String) {
+
+        // The collection name for PRODUCTS
+        mFireStore.collection(Constants.PRODUCTS)
+            .document(productId)
+            .get() // Will get the document snapshots.
+            .addOnSuccessListener { document ->
+
+                // Here we get the product details in the form of document.
+                Log.e(activity.javaClass.simpleName, document.toString())
+
+                // Convert the snapshot to the object of Product data model class.
+                val product = document.toObject(Product::class.java)!!
+
+                activity.productDetailsSuccess(product)
+            }
+            .addOnFailureListener { e ->
+
+                // Hide the progress dialog if there is an error.
+                activity.hideProgressDialog()
+
+                Log.e(activity.javaClass.simpleName, "Error while getting the product details.", e)
+            }
     }
 
 
@@ -247,6 +268,23 @@ class FireStore {
 
     }
 
+    /*fun checkIfItemExistInCart(activity: ProductDetailsActivity, productId: String){
+        mFireStore.collection(Constants.CART_ITEMS)
+            .whereEqualTo(Constants.USER_ID, getCurrentUserID())
+            .whereEqualTo(Constants.PRODUCT_ID, productId)
+            .get()
+            .addOnSuccessListener { document->
+               Log.e(activity.javaClass.simpleName, document.documents.toString())
+                if (document.documents.size > 0) {
+                    activity.productExistsInCart()
+                } else {
+                    activity.hideProgressDialog()
+                }
+
+            }
+
+    }*/
+
     fun getDashboardItemsList(fragment: HomeFragment) {
         // The collection name for PRODUCTS
         mFireStore.collection(Constants.PRODUCTS)
@@ -282,15 +320,6 @@ class FireStore {
             .set(addToCart, SetOptions.merge())
             .addOnSuccessListener {
                 activity.addToCartSuccess()
-            }.addOnFailureListener{
-                e ->
-                activity.hideProgressDialog()
-
-                Log.e(
-                    activity.javaClass.simpleName,
-                    "Error mientras se crea el documento cart item",
-                    e
-                )
             }
 
     }
@@ -305,15 +334,7 @@ class FireStore {
                 fragment.productDeleteSuccess()
 
             }
-            .addOnFailureListener { e ->
 
-
-                Log.e(
-                    fragment.requireActivity().javaClass.simpleName,
-                    "Error while deleting the product.",
-                    e
-                )
-            }
     }
 
 

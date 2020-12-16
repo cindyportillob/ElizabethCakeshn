@@ -13,11 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="ExtraText">
-        <activity android:name=".ProductDetailsActivity"></activity>
+        <activity android:name=".CartListActivity"></activity>
+        <activity android:name=".ProductDetailsActivity" />
         <activity
             android:name=".SettingsActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/actionbar"></activity>
+            android:theme="@style/actionbar" />
         <activity
             android:name=".AddProductActivity"
             android:screenOrientation="portrait" />

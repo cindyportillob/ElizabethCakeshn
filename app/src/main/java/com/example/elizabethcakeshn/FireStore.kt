@@ -259,6 +259,25 @@ class FireStore {
             }
     }
 
+    fun addCartItems(activity: ProductDetailsActivity, addToCart:CartItem){
+        mFireStore.collection(Constants.CART_ITEMS)
+            .document()
+            .set(addToCart, SetOptions.merge())
+            .addOnSuccessListener {
+                activity.addToCartSuccess()
+            }.addOnFailureListener{
+                e ->
+                activity.hideProgressDialog()
+
+                Log.e(
+                    activity.javaClass.simpleName,
+                    "Error mientras se crea el documento cart item",
+                    e
+                )
+            }
+
+    }
+
     fun deleteProduct(fragment: DashboardFragment, productId: String) {
 
         mFireStore.collection(Constants.PRODUCTS)

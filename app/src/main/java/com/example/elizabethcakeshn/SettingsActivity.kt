@@ -24,8 +24,7 @@ class SettingsActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun getUserDetails(){
-
-        (resources.getString(R.string.please_wait))
+        //(resources.getString(R.string.please_wait))
         FireStore().getUserDetails(this)
     }
 
@@ -36,11 +35,10 @@ class SettingsActivity : AppCompatActivity(), View.OnClickListener {
 
 
         GlideLoader(this@SettingsActivity).loadProductPicture(users.image, iv_user_photo)
-        tv_nameP.text = "${users.Nombre}"
+        tv_nameP.text = users.Nombre
         tv_generoP.text = users.genero
         tv_emailP.text = users.Email
-        tv_celularP.text = "${users.mobile}"
-
+        tv_celularP.text = users.mobile.toString()
     }
 
     override  fun onResume(){

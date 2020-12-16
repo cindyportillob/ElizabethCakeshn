@@ -34,23 +34,22 @@ class UserProfileActivity : BaseActivity1(), View.OnClickListener {
             detalleUsuario = intent.getParcelableExtra(Constants.EXTRA_USER_DETAILS)!!
         }
 
+        et_first_name.setText(detalleUsuario.Nombre)
+        et_email.setText(detalleUsuario.Email)
+        et_email.isEnabled = false
 
         if (detalleUsuario.Pcompleto == 0){
+            tv_title.text = "Completar Perfil"
             et_first_name.isEnabled = false
-            et_first_name.setText(detalleUsuario.Nombre)
-
-            et_email.isEnabled = false
-            et_email.setText(detalleUsuario.Email)
-
             iv_user_photo.setOnClickListener(this@UserProfileActivity)
             btn_submit.setOnClickListener(this@UserProfileActivity)
         }else{
             setupActionBar()
             tv_title.text = resources.getString(R.string.title_edit_profile)
 
-            et_first_name.setText(detalleUsuario.Nombre)
+            et_first_name.setText("Luis Cueva")
             et_email.isEnabled = false
-            et_email.setText(detalleUsuario.Email)
+            et_email.setText("luisc_cuevaordo@hotmail.com")
 
             if(detalleUsuario.mobile != 0L){
                 et_mobile_number.setText(detalleUsuario.mobile.toString())
@@ -62,6 +61,55 @@ class UserProfileActivity : BaseActivity1(), View.OnClickListener {
             }
         }
 
+    }
+
+    private fun updateUserProfileDetails() {
+
+        val userHashMap = HashMap<String, Any>()
+
+        // TODO Step 5: Update the code if user is about to Edit Profile details instead of Complete Profile.
+        // Get the FirstName from editText and trim the space
+        val firstName = et_first_name.text.toString().trim { it <= ' ' }
+        if (firstName != detalleUsuario.Nombre) {
+            userHashMap[Constants.NAME] = firstName
+        }
+
+        // TODO Step 6: Email ID is not editable so we don't need to add it here to get the text from EditText.
+
+        // Here we get the text from editText and trim the space
+        val mobileNumber = et_mobile_number.text.toString().trim { it <= ' ' }
+        val gender = if (rb_male.isChecked) {
+            Constants.MALE
+        } else {
+            Constants.FEMALE
+        }
+
+        if (mUserProfileImageURL.isNotEmpty()) {
+            userHashMap[Constants.IMAGE] = mUserProfileImageURL
+        }
+
+        // TODO Step 7: Update the code here if it is to edit the profile.
+        if (mobileNumber.isNotEmpty() && mobileNumber != detalleUsuario.mobile.toString()) {
+            userHashMap[Constants.MOBILE] = mobileNumber.toLong()
+        }
+
+        if (gender.isNotEmpty() && gender != detalleUsuario.genero) {
+            userHashMap[Constants.GENDER] = gender
+        }
+
+        // Here if user is about to complete the profile then update the field or else no need.
+        // 0: User profile is incomplete.
+        // 1: User profile is completed.
+        if (detalleUsuario.Pcompleto == 0) {
+            userHashMap[Constants.COMPLETE_PROFILE] = 1
+        }
+        // END
+
+        // call the registerUser function of FireStore class to make an entry in the database.
+        FireStore().updateUserProfileData(
+            this@UserProfileActivity,
+            userHashMap
+        )
     }
 
     override fun onClick(v: View?) {
@@ -83,8 +131,6 @@ class UserProfileActivity : BaseActivity1(), View.OnClickListener {
                 R.id.btn_submit ->{
                     if (validateUserProfileDetails()){
                         showProgressDialog("Por favor Espera")
-                        val userHashMap = HashMap<String, Any>()
-                        val numeroTelefono = et_mobile_number.text.toString().trim { it <= ' '}
                         if (selectedImageFileUri != null){
                             if (selectedImageFileUri != null){
                                 FireStore().uploadImageToCloudStore(
@@ -93,7 +139,7 @@ class UserProfileActivity : BaseActivity1(), View.OnClickListener {
                                 )
                             }else{
                                 updateUserProfileDetails()
-                            }
+                        }
                         }
 
                     }
@@ -200,6 +246,7 @@ class UserProfileActivity : BaseActivity1(), View.OnClickListener {
      */
     fun userProfileUpdateSuccess() {
 
+
         // Hide the progress dialog
         hideProgressDialog()
 
@@ -231,53 +278,6 @@ class UserProfileActivity : BaseActivity1(), View.OnClickListener {
     /**
      * A function to update user profile details to the firestore.
      */
-    private fun updateUserProfileDetails() {
 
-        val userHashMap = HashMap<String, Any>()
-
-        // TODO Step 5: Update the code if user is about to Edit Profile details instead of Complete Profile.
-        // Get the FirstName from editText and trim the space
-        val firstName = et_first_name.text.toString().trim { it <= ' ' }
-        if (firstName != detalleUsuario.Nombre) {
-            userHashMap[Constants.NAME] = firstName
-        }
-
-        // TODO Step 6: Email ID is not editable so we don't need to add it here to get the text from EditText.
-
-        // Here we get the text from editText and trim the space
-        val mobileNumber = et_mobile_number.text.toString().trim { it <= ' ' }
-        val gender = if (rb_male.isChecked) {
-            Constants.MALE
-        } else {
-            Constants.FEMALE
-        }
-
-        if (mUserProfileImageURL.isNotEmpty()) {
-            userHashMap[Constants.IMAGE] = mUserProfileImageURL
-        }
-
-        // TODO Step 7: Update the code here if it is to edit the profile.
-        if (mobileNumber.isNotEmpty() && mobileNumber != detalleUsuario.mobile.toString()) {
-            userHashMap[Constants.MOBILE] = mobileNumber.toLong()
-        }
-
-        if (gender.isNotEmpty() && gender != detalleUsuario.genero) {
-            userHashMap[Constants.GENDER] = gender
-        }
-
-        // Here if user is about to complete the profile then update the field or else no need.
-        // 0: User profile is incomplete.
-        // 1: User profile is completed.
-        if (detalleUsuario.Pcompleto == 0) {
-            userHashMap[Constants.COMPLETE_PROFILE] = 1
-        }
-        // END
-
-        // call the registerUser function of FireStore class to make an entry in the database.
-        FireStore().updateUserProfileData(
-            this@UserProfileActivity,
-            userHashMap
-        )
-    }
 
 }

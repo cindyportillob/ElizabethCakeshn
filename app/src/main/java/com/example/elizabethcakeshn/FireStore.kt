@@ -1,6 +1,8 @@
 package com.example.elizabethcakeshn
 
 import android.app.Activity
+import android.content.Context
+import android.content.SharedPreferences
 import android.net.Uri
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -73,8 +75,18 @@ class FireStore {
 
                 val user = document.toObject(Users::class.java)!!
 
-                //TODO Step 6: Pass the result to the login activity
-                //Start
+                val sharedPreferences =
+                    activity.getSharedPreferences(
+                        Constants.ELIZABETHCAKES_PREFERENCES,
+                        Context.MODE_PRIVATE
+                    )
+
+                val editor: SharedPreferences.Editor = sharedPreferences.edit()
+                editor.putString(
+                    Constants.LOGGED_IN_USERNAME,
+                    "${user.Nombre}"
+                )
+                editor.apply()
                 when(activity){
                     is LoginActivity -> {
                         //llamar a una funcion de la actividad base para transferir el resultado

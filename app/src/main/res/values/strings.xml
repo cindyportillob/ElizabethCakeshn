@@ -42,32 +42,32 @@
     <string name="title_activity_main_cindy">MainActivity</string>
     <string name="title_activity_main35">MainActivity</string>
     <string name="title_edit_profile">EDITAR PERFIL</string>
-    <string name="title_add_product">ADD PRODUCT</string>
-    <string name="et_hint_product_title">Product Title</string>
-    <string name="et_hint_product_price">Product Price ($)</string>
+    <string name="title_add_product">Agregar Producto</string>
+    <string name="et_hint_product_title">Producto</string>
+    <string name="et_hint_product_price">Precio($)</string>
     <string name="et_hint_product_description">Product Description</string>
-    <string name="et_hint_product_quantity">Product Quantity</string>
+    <string name="et_hint_product_quantity">Cantidad</string>
     <string name="btn_lbl_submit">Submit</string>
 
-    <string name="err_msg_enter_first_name">Please enter first name.</string>
-    <string name="err_msg_enter_last_name">Please enter last name.</string>
-    <string name="err_msg_enter_password">Please enter password.</string>
-    <string name="err_msg_enter_confirm_password">Please enter confirm password.</string>
-    <string name="err_msg_password_and_confirm_password_mismatch">Password and confirm password does not match.</string>
+    <string name="err_msg_enter_first_name">Por favor ingrese primer nombre.</string>
+    <string name="err_msg_enter_last_name">Por favor ingrese segundo nombre.</string>
+    <string name="err_msg_enter_password">Por favor ingrese la contraseña.</string>
+    <string name="err_msg_enter_confirm_password">Por favor ingrese la confirmacion de contraseña.</string>
+    <string name="err_msg_password_and_confirm_password_mismatch">contraseña y confirmacion de contraseña no son las mismas.</string>
     <string name="err_msg_agree_terms_and_condition">Please agree terms and condition.</string>
 
-    <string name="err_msg_select_product_image">Please select product image.</string>
-    <string name="err_msg_enter_product_title">Please enter product title.</string>
-    <string name="err_msg_enter_product_price">Please enter product price.</string>
-    <string name="err_msg_enter_product_description">Please enter product description.</string>
-    <string name="err_msg_enter_product_quantity">Please enter product quantity.</string>
-    <string name="product_uploaded_success_message">Your product is uploaded successfully.</string>
-    <string name="no_products_added_yet">No products added yet!</string>
+    <string name="err_msg_select_product_image">Por favor seleccione una imagen para el producto.</string>
+    <string name="err_msg_enter_product_title">Por favor ingrese nombre de prducto.</string>
+    <string name="err_msg_enter_product_price">Por favor ingrese el precio.</string>
+    <string name="err_msg_enter_product_description">Por favor ingrese la descripcion.</string>
+    <string name="err_msg_enter_product_quantity">Por favor ingrese la cantidad.</string>
+    <string name="product_uploaded_success_message">El producto ha sido subido exitosamente.</string>
+    <string name="no_products_added_yet">No hay productos agregados</string>
     <string name="no_dashboard_item_found">No items found!</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <string name="btn_msj_agregar_producto">Agregar al carrito</string>
+    <string name="btn_msj_agregar_producto">Agregar Producto</string>
     <string name="app_name" />
 
     <dimen name="item_list_marginTop">16dp</dimen>
@@ -80,10 +80,10 @@
     <dimen name="rv_item_price_marginTop">2dp</dimen>
     <dimen name="rv_item_price_textSize">12sp</dimen>
 
-    <string name="product_delete_success_message">Your product is deleted successfully.</string>
-    <string name="delete_dialog_title">Delete</string>
-    <string name="delete_dialog_message">Are you sure you want to delete the product?</string>
-    <string name="yes">Yes</string>
+    <string name="product_delete_success_message">El producto se ha eliminado.</string>
+    <string name="delete_dialog_title">Eliminar</string>
+    <string name="delete_dialog_message">Estas seguro que quieres eliminar el producto?</string>
+    <string name="yes">Si</string>
     <string name="no">No</string>
 
 

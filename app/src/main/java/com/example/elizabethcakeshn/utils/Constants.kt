@@ -13,7 +13,7 @@ object Constants {
     const val USERS: String = "users"
     const val ELIZABETHCAKES_PREFERENCES: String = "ElizabethCakesPrefs"
     const val LOGGED_IN_USERNAME: String = "logged_in_username"
-
+    const val NAME = "Nombre"
     //Constantes extras
     const val EXTRA_USER_DETAILS: String = "extra_user_details"
 
@@ -30,7 +30,6 @@ object Constants {
     const val IMAGE: String="image"
     const val COMPLETE_PROFILE: String = "Pcompleto"
 
-    const val NAME: String = "Nombre"
     const val EMAIL: String = "Email"
 
     const val PRODUCT_IMAGE:String= "product_image"

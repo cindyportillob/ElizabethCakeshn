@@ -28,6 +28,10 @@
             app:layout_constraintStart_toStartOf="parent"
             android:paddingBottom="45dp"
             >
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar_settings_activity"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -46,6 +50,8 @@
             android:layout_below="@id/fl_header_bg"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp">
+
+
 
             <ImageView
 
@@ -83,7 +89,7 @@
             android:layout_marginTop="183dp"
             android:layout_marginEnd="110dp"
             android:layout_marginBottom="100dp"
-            android:text="TextView" />
+            android:text="Luis Cueva" />
 
         <TextView
             android:id="@+id/tv_generoP"
@@ -107,7 +113,7 @@
             android:layout_marginStart="0dp"
             android:layout_marginEnd="0dp"
             android:layout_marginBottom="-110dp"
-            android:text="TextView" />
+            android:text="luisc_cuevaordo@hotmail.com" />
 
         <TextView
             android:id="@+id/tv_celularP"

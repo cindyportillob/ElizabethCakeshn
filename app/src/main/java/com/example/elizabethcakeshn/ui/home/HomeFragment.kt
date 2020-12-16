@@ -44,10 +44,21 @@ class HomeFragment : BaseFragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.itemId
 
-        if (id == R.id.action_add_product) {
+        when (id){
+
+        R.id.action_add_product -> {
+
             startActivity(Intent(activity, AddProductActivity::class.java))
             return true
         }
+
+        R.id.action_cart_menu -> {
+            startActivity(Intent(activity, CartListActivity2::class.java))
+            return true
+        }
+
+        }
+
         return super.onOptionsItemSelected(item)
     }
 

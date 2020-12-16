@@ -34,7 +34,7 @@ class ProductDetailsActivity : BaseActivity1(), View.OnClickListener {
                 intent.getStringExtra(Constants.EXTRA_PRODUCT_OWNER_ID)!!
         }
 
-        setupActionBar()
+
 
         if (FireStore().getCurrentUserID() == productOwnerId) {
             btn_add_to_cart.visibility = View.GONE

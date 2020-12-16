@@ -1,16 +1,18 @@
 package com.example.elizabethcakeshn
+import android.app.Dialog
 import android.os.Bundle
+import android.os.Handler
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
-import kotlin.Boolean as Boolean1
-import android.app.Dialog
 import kotlinx.android.synthetic.main.dialog_progress.*
+import kotlin.Boolean as Boolean1
 
 
 open class BaseActivity1: AppCompatActivity() {
 
-
+    private var doubleBackToExitPressedOnce = false
     private lateinit var mProgressDialog: Dialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,6 +56,25 @@ open class BaseActivity1: AppCompatActivity() {
     }
     fun hideProgressDialog() {
         mProgressDialog.dismiss()
+    }
+
+    fun doubleBackToExit() {
+
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed()
+            return
+        }
+
+        this.doubleBackToExitPressedOnce = true
+
+        Toast.makeText(
+            this,
+            resources.getString(R.string.err_msg_enter_nombre_completo),
+            Toast.LENGTH_SHORT
+        ).show()
+
+        @Suppress("DEPRECATION")
+        Handler().postDelayed({ doubleBackToExitPressedOnce = false }, 2000)
     }
 }
 

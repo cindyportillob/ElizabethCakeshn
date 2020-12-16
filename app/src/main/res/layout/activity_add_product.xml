@@ -49,10 +49,10 @@
         android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toBottomOf="@+id/textView5"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.968"
+        app:layout_constraintHorizontal_bias="0.468"
         app:layout_constraintStart_toStartOf="@+id/textView5"
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        app:layout_constraintVertical_bias="0.648"
+        app:layout_constraintVertical_bias="0.351"
         tools:srcCompat="@tools:sample/avatars" />
 
     <ImageView
@@ -74,29 +74,78 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
+        android:id="@+id/editTextTextPersonName4"
+        android:layout_width="349dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+
+        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName2"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="Nombre de Producto"
+        tools:layout_editor_absoluteX="31dp"
+        tools:layout_editor_absoluteY="328dp" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="Precio"
+        tools:layout_editor_absoluteX="31dp"
+        tools:layout_editor_absoluteY="399dp" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="Descripcion del Producto"
+        tools:layout_editor_absoluteX="31dp"
+        tools:layout_editor_absoluteY="474dp" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="Cantidad"
+        tools:layout_editor_absoluteX="31dp"
+        tools:layout_editor_absoluteY="576dp" />
+
+    <EditText
         android:id="@+id/editTextTextPersonName2"
         android:layout_width="349dp"
         android:layout_height="45dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Nombre del producto"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName4"
+        android:id="@+id/editTextTextPersonName5"
         android:layout_width="349dp"
         android:layout_height="45dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="28dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Precio"
+
         app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName2"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName2"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
 
     <EditText
         android:id="@+id/editTextTextPersonName3"
@@ -105,7 +154,7 @@
         android:layout_marginTop="20dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Descripcion del prodcuto"
+
         app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName2"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName2"
@@ -113,26 +162,13 @@
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="207dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="36dp"
+        android:layout_width="251dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/fondo_boton"
         android:text="@string/btn_msj_agregar_producto"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName5" />
-
-    <EditText
-        android:id="@+id/editTextTextPersonName5"
-        android:layout_width="349dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Cantidad del producto"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName2"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName2"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

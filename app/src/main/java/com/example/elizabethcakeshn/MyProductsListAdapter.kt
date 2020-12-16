@@ -1,10 +1,12 @@
 package com.example.elizabethcakeshn
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.elizabethcakes.utils.Constants
 import com.example.elizabethcakeshn.ui.dashboard.DashboardFragment
 import com.example.elizabethcakeshn.utils.GlideLoader
 import kotlinx.android.synthetic.main.item_list_layout.view.*
@@ -44,6 +46,15 @@ private val fragment: DashboardFragment
 
                 fragment.deleteProduct(model.product_id)
             }
+
+            holder.itemView.setOnClickListener {
+                // Launch Product details screen.
+                val intent = Intent(context, ProductDetailsActivity::class.java)
+                intent.putExtra(Constants.EXTRA_PRODUCT_ID, model.product_id)
+                intent.putExtra(Constants.EXTRA_PRODUCT_OWNER_ID, model.user_id)
+                context.startActivity(intent)
+            }
+
 
 
         }

@@ -5,7 +5,6 @@ import android.content.Intent
 import android.net.Uri
 import android.provider.MediaStore
 import android.webkit.MimeTypeMap
-import com.example.elizabethcakeshn.UserProfileActivity
 
 object Constants {
 
@@ -39,7 +38,9 @@ object Constants {
     const val USER_ID :String= "user_id"
 
 
-    const val EXTRA_PRODUCT_OWNER: String= "extra_product_owner_id"
+
+    const val EXTRA_PRODUCT_OWNER_ID: String= "extra_product_owner_id"
+    const val EXTRA_PRODUCT_ID: String = "extra_product_id"
 
 
 

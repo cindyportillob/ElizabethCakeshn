@@ -168,6 +168,71 @@ class FireStore {
             }
     }
 
+    fun removeItemFromCart(context: Context, cart_id: String){
+        mFireStore.collection(Constants.CART_ITEMS)
+            .document(cart_id)
+            .delete()
+            .addOnSuccessListener {
+
+                when (context) {
+                    is CartListActivity2 -> {
+                        context.itemRemovedSuccess()
+                    }
+                }
+                // END
+            }
+            .addOnFailureListener { e ->
+
+                // Hide the progress dialog if there is any error.
+                when (context) {
+                    is CartListActivity2 -> {
+                        context.hideProgressDialog()
+                    }
+                }
+                Log.e(
+                    context.javaClass.simpleName,
+                    "Error while removing the item from the cart list.",
+                    e
+                )
+            }
+    }
+
+    fun updateMyCart(context: Context, cart_id: String, itemHashMap: HashMap<String, Any>){
+        mFireStore.collection(Constants.CART_ITEMS)
+            .document(cart_id)
+            .update(itemHashMap)
+            .addOnSuccessListener {
+
+                when (context) {
+                    is CartListActivity2 -> {
+                        context.itemUpdateSuccess()
+                    }
+                }
+
+
+            }.addOnFailureListener{
+
+            }
+    }
+
+    fun getAllProductsList(activity: CartListActivity2){
+        mFireStore.collection(Constants.PRODUCTS)
+            .get()
+            .addOnSuccessListener { document ->
+                Log.e("Products List", document.documents.toString())
+                val productsList: ArrayList<Product> = ArrayList()
+                for (i in document.documents){
+                    val product = i.toObject(Product::class.java)
+                    product!!.product_id = i.id
+
+                    productsList.add(product)
+                }
+
+                activity.succesProdcutsListFromFireStore(productsList)
+
+            }
+    }
+
 
     fun uploadImageToCloudStore(activity: Activity, imageFileURI:Uri?,imageType:String){
         val sRef: StorageReference = FirebaseStorage.getInstance().reference.child(

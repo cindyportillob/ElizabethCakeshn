@@ -18,9 +18,7 @@ class ProductDetailsActivity : BaseActivity1(), View.OnClickListener {
     private var mProductId: String = ""
     private lateinit var mProductDetails: Product
 
-    /**
-     * This function is auto created by Android when the Activity Class is created.
-     */
+
     override fun onCreate(savedInstanceState: Bundle?) {
         //This call the parent constructor
         super.onCreate(savedInstanceState)
@@ -89,12 +87,12 @@ class ProductDetailsActivity : BaseActivity1(), View.OnClickListener {
         tv_product_details_stock_quantity.text = product.stock_quantity
 
 
-        /*if(product.stock_quantity.toInt() == 0){
+        if(product.stock_quantity.toInt() == 0) {
 
-            // Hide Progress dialog.
+
             hideProgressDialog()
 
-            // Hide the AddToCart button if the item is already in the cart.
+
             btn_add_to_cart.visibility = View.GONE
 
             tv_product_details_stock_quantity.text =
@@ -106,7 +104,9 @@ class ProductDetailsActivity : BaseActivity1(), View.OnClickListener {
                     R.color.colorSnackBarError
                 )
             )
-        */
+        }else if (FireStore().getCurrentUserID() == product.user_id) {
+            hideProgressDialog()
+        }
 
         // There is no need to check the cart list if the product owner himself is seeing the product details.
             //if (FireStore().getCurrentUserID() == product.user_id) {

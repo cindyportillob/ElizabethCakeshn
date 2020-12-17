@@ -231,6 +231,12 @@ class FireStore {
                 activity.succesProdcutsListFromFireStore(productsList)
 
             }
+            .addOnFailureListener { e ->
+                // Hide the progress dialog if there is any error based on the base class instance.
+                activity.hideProgressDialog()
+
+                Log.e("Get Product List", "Error while getting all product list.", e)
+            }
     }
 
 
@@ -347,6 +353,16 @@ class FireStore {
                 }
 
             }
+            .addOnFailureListener { e ->
+            // Hide the progress dialog if there is an error.
+            activity.hideProgressDialog()
+
+            Log.e(
+                activity.javaClass.simpleName,
+                "Error while checking the existing cart list.",
+                e
+            )
+        }
 
     }
 
@@ -423,20 +439,10 @@ class FireStore {
             .delete()
             .addOnSuccessListener {
 
-                // Notify the success result to the base class.
                 fragment.productDeleteSuccess()
+
             }
-            .addOnFailureListener { e ->
 
-                // Hide the progress dialog if there is an error.
-
-
-                Log.e(
-                    fragment.requireActivity().javaClass.simpleName,
-                    "Error while deleting the product.",
-                    e
-                )
-            }
     }
 
 

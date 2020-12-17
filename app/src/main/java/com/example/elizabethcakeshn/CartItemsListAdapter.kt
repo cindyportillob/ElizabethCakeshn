@@ -11,7 +11,7 @@ import com.example.elizabethcakeshn.utils.GlideLoader
 import kotlinx.android.synthetic.main.item_cart_layout.view.*
 
 
-class CartItemsListAdapter  (
+class CartItemsListAdapter (
     private  val context: Context,
     private var list: ArrayList<CartItem>
 ): RecyclerView.Adapter<RecyclerView.ViewHolder>(){
@@ -25,8 +25,6 @@ class CartItemsListAdapter  (
             )
         )
     }
-
-
 
 
 
